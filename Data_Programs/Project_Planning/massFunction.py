@@ -13,12 +13,15 @@ small = 0
 unknown = 0
 
 for n in range(0,len(data)):
-    if data[n][col['massJpt']] != '':
+    #in the case the we know the mass:
+    if data[n][col['massJpt']] != '': 
+        #if the mass is larger than or smaller than jupiter's (CSV is in jupiter masses):
         if float(data[n][col['massJpt']]) > 1:
             large += 1
         elif float(data[n][col['massJpt']]) <= 1:
             small += 1
 
+#calculating the percent from total (all planets with known masses), and printing:
 total = large + small
 larger = large / total * 100
 print(str(round(larger,1)) + "% of planets with a known mass have a larger mass then jupiter.")
